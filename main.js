@@ -76,7 +76,8 @@ posts.forEach((element)=>{
 
     console.log(imageAuthor);
 
-    let likeBtn ;
+    let likeUser = element.likes;
+    console.log(likeUser);
 
     let socialData =` <div class="post">
     <div class="post__header">
@@ -85,7 +86,7 @@ posts.forEach((element)=>{
                 <img class="profile-pic" src=${postIcon} alt="Phil Mangione">                    
             </div>
             <div class="post-meta__data">
-                <div class="post-meta__author"> ${iduser}  ${iconAuthor}</div>
+                <div class="post-meta__author">   ${iconAuthor}</div>
                 <div class="post-meta__time">${postDate}</div>
             </div>                    
         </div>
@@ -97,19 +98,51 @@ posts.forEach((element)=>{
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button  js-like-button"  data-postid="${iduser}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                    <span class="like-button__label"${likeBtn}>Mi Piace</span>
+                    <span class="like-button__label">Mi Piace</span>
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                Piace a <b id="like-counter-1" class="js-likes-counter">${likeUser}</b> persone
             </div>
         </div> 
     </div>            
 </div>`
 cont.innerHTML+=(socialData);
+
+
+let likeBtn = document.querySelectorAll(".like-button");
+
+console.log(likeBtn);
+
+
+for(let i = 0; i < likeBtn.length; i ++){
+    let elemento = likeBtn[i];
+    elemento.addEventListener("click",
+    function(){
+       
+        elemento.classList.toggle("like-button--liked")
+        elemento.classList.toggle("color");
+        likeUser = posts[i].likes;
+        iduser = i + 1; 
+        let counter = document.getElementById("like-counter-" + iduser);
+        counter.innerHTML = likeUser + 1;
+        elemento.classList.add("like-button--liked")
+        const idArray = [];
+        idArray.push(iduser);
+        console.log(idArray);
+
+    }
+);   
+}
+
+
+
 }
 )
+
+
+
 
 
