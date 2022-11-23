@@ -10,7 +10,10 @@ body {
     color: #050505;
     font-size: 100%;
 }
-
+.color{
+    background-color: #023047;
+    color: white;
+}
 h1 {
     font-size: calc(1.5rem + 2vw);
     color: white;
