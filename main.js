@@ -71,7 +71,7 @@ for (let index = 0; index < btn.length; index++) {
     element.addEventListener("click",
     function () {
         element.classList.toggle("like-button--liked")
-
+        element.classList.toggle("color")
 
         let likes = posts[index].likes
         let id = index + 1;
